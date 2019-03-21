@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewController">
+   <children>
+      <VBox fx:id="newWindow" focusTraversable="true" layoutX="4.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="448.0" prefWidth="337.0">
+         <children>
+            <Label style="-fx-font-weight: 500;" text="Class" VBox.vgrow="ALWAYS" />
+            <ChoiceBox id="hello" fx:id="clas" focusTraversable="false" opacity="0.77" prefHeight="39.0" prefWidth="206.0" VBox.vgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ChoiceBox>
+            <Label style="-fx-font-weight: 500;" text="Subject" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="subject" layoutX="10.0" layoutY="37.0" opacity="0.77" prefHeight="39.0" prefWidth="208.0" VBox.vgrow="ALWAYS" />
+            <Label layoutX="40.0" layoutY="102.0" style="-fx-font-weight: 500;" text="Quarter" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="quarter" focusTraversable="false" layoutX="40.0" layoutY="47.0" opacity="0.77" prefHeight="39.0" prefWidth="206.0" VBox.vgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ChoiceBox>
+            <Label fx:id="error" textFill="#ff2605">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="advance" mnemonicParsing="false" onAction="#handleButtonAction" text="Advance" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Button>
+            <HBox prefHeight="59.0" prefWidth="112.0">
+               <children>
+                  <Button fx:id="generate" mnemonicParsing="false" onAction="#handleButtonAction" text="Generate" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="60.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="cancel" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="39.0" prefWidth="84.0" text="Cancel" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" left="30.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</Pane>
