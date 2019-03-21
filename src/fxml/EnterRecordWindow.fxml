@@ -120,6 +120,7 @@
             <Button fx:id="cancel" mnemonicParsing="false" onAction="#handleButtonAction" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
             <Label layoutX="110.0" layoutY="189.0" text="Description" GridPane.rowIndex="8" />
             <TextArea fx:id="description" layoutX="177.0" layoutY="217.0" maxWidth="-Infinity" prefHeight="51.0" prefWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="I am just testing" GridPane.columnIndex="1" GridPane.rowIndex="14" />
          </children>
       </GridPane>
    </children>
