@@ -41,17 +41,17 @@
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Slider fx:id="slider1A" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Slider fx:id="slider1A" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </Slider>
-                                    <Slider fx:id="slider2A" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Slider fx:id="slider2A" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>
                                     </Slider>
-                                    <Slider fx:id="slider3A" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Slider fx:id="slider3A" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>
@@ -86,17 +86,17 @@
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Slider fx:id="slider1B" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Slider fx:id="slider1B" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </Slider>
-                                    <Slider fx:id="slider2B" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Slider fx:id="slider2B" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>
                                     </Slider>
-                                    <Slider fx:id="slider3B" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Slider fx:id="slider3B" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>
@@ -138,22 +138,22 @@
                                     <Label text="Priority 1" GridPane.rowIndex="2" />
                                     <Label text="Priority 2" GridPane.rowIndex="3" />
                                     <Label text="Priority 3" GridPane.rowIndex="4" />
-                                    <TextField fx:id="noOfQuestionC" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#textBoxHandler" prefHeight="39.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <TextField fx:id="noOfQuestionC" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Slider fx:id="slider1C" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Slider fx:id="slider1C" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="10.0" right="20.0" />
                                        </GridPane.margin>
                                     </Slider>
-                                    <Slider fx:id="slider2C" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Slider fx:id="slider2C" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>
                                     </Slider>
-                                    <Slider fx:id="slider3C" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Slider fx:id="slider3C" blockIncrement="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <padding>
                                           <Insets left="10.0" right="20.0" />
                                        </padding>

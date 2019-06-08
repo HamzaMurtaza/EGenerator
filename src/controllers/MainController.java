@@ -592,21 +592,49 @@ public class MainController implements Initializable {
             
             
 //      
-           Math.floor( settingA.getNumberOfQuestions()/settingA.getPriorityPercent1());
-            
+
+// NEW WORK:I am first getting all the percentages of the  
+
+           int numOfQuesAP1= (int) Math.floor(settingA.getPriorityPercent1()/settingA.getNumberOfQuestions());
+           int numOfQuesAP2= (int) Math.floor(settingA.getPriorityPercent2()/settingA.getNumberOfQuestions());
+           int numOfQuesAP3= (int) Math.floor(settingA.getPriorityPercent3()/settingA.getNumberOfQuestions());
+           
+//           Math.floor( settingA.getNumberOfQuestions()/settingA.getPriorityPercent1());
+
             Random randA = new Random();
             int nA;
 
-            for (int i = 0; i < settingA.getNumberOfQuestions(); i++) {
-//                nA = randA.nextInt(sectionA.size()) + 0;
-//                refinedA.add(sectionA.get(nA));//problme here , null pointer, invocation problem
+//            for (int i = 0; i < settingA.getNumberOfQuestions(); i++) {
+////                nA = randA.nextInt(sectionA.size()) + 0;
+////                refinedA.add(sectionA.get(nA));//problme here , null pointer, invocation problem
+//
+//                nA = randA.nextInt(remainingA.size()) + 0;
+//                refinedA.add(remainingA.get(nA));//problme here , null pointer, invocation problem
+//                remainingA.remove(nA);
+//
+//            }
 
-                nA = randA.nextInt(remainingA.size()) + 0;
-                refinedA.add(remainingA.get(nA));//problme here , null pointer, invocation problem
+              for (int i = 0; i < numOfQuesAP1; i++) {
+                nA = randA.nextInt(priority1.size()) + 0;
+                refinedA.add(priority1.get(nA));//problme here , null pointer, invocation problem
                 remainingA.remove(nA);
-
-            }
-
+                priority1.remove(nA);
+              }
+              for (int i = 0; i < numOfQuesAP2; i++) {
+                nA = randA.nextInt(priority2.size()) + 0;
+                refinedA.add(priority2.get(nA));//problme here , null pointer, invocation problem
+                remainingA.remove(nA);
+                priority2.remove(nA);
+              }
+              for (int i = 0; i < numOfQuesAP3; i++) {
+                nA = randA.nextInt(priority3.size()) + 0;
+                refinedA.add(priority3.get(nA));//problme here , null pointer, invocation problem
+                remainingA.remove(nA);
+                priority3.remove(nA);
+              }
+              
+              
+              
 //            System.out.println(sectionA.get(0));
 //            System.out.println(randA.nextInt(sectionA.size()) + 1);
             // refinedA.add(sectionA.get(0));

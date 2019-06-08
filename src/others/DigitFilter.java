@@ -14,7 +14,7 @@ import java.lang.StringBuilder;
  *
  * @author Hamza
  */
-public class DigitFilter  {
+public class DigitFilter extends DocumentFilter{
 
 //    @Override
 //    public void insertString(String text) throws BadLocationException {

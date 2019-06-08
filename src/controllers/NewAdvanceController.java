@@ -4,8 +4,10 @@ import beans.Settings;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,9 +15,14 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javax.swing.JTextPane;
 import main.NewAdvanceWindow;
 import main.NewWindow;
+//imort javafx.scene.input;
 
 
 //IMPROVEMENT: if there was no number in textbox, give an error/ make this error handling good
@@ -89,25 +96,27 @@ public class NewAdvanceController implements Initializable {
     @FXML
     private Button buttonOk;
           Settings settingA = new Settings();
+          
+     String lastSlider;     
 
-    @FXML
-    void textBoxHandler(ActionEvent event) {
-       
-        try{  
-        
-            if (checkBoxA.isSelected()) {
-                 if(Integer.parseInt(noOfQuestionA.getText())>4){
-                 //allow the sliders to work
-                 }
-                 
-            }
-        
-        }
-        catch (NumberFormatException e) {
-                    System.out.println(e.getMessage());
-                }
-        
-    }
+//    @FXML
+//    void textBoxHandler(ActionEvent event) {
+//       
+//        try{  
+//        
+//            if (checkBoxA.isSelected()) {
+//                 if(Integer.parseInt(noOfQuestionA.getText())>4){
+//                 //allow the sliders to work
+//                 }
+//                 
+//            }
+//        
+//        }
+//        catch (NumberFormatException e) {
+//                    System.out.println(e.getMessage());
+//                }
+//        
+//    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -132,16 +141,71 @@ public class NewAdvanceController implements Initializable {
         buttonOk.setDisable(true);
 
         // noOfQuestionA.getOnAction((ActionEvent event) ->{});
-        DecimalFormat df = new DecimalFormat("####0.00");
+        DecimalFormat df = new DecimalFormat("####0.0");
 
         slider1A.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
             sliderValueA1.setText(df.format(newValue.doubleValue()));
+//            int i=Numberobservable.getValue();
+//observable.getValue().intValue();
+//            int remain=Integer.parseInt(noOfQuestionA.getText())/observable.getValue().intValue();
+//            slider2A.setValue(remain/2);
+//            slider3A.setValue(remain/2);
+            
+            
+//            if(lastSlider == null || "A".equals(lastSlider)){
+//            
+//            slider2A.setValue(Math.ceil(remain/2));
+//            slider3A.setValue(Math.floor(remain/2));
+//            }
+//            else if("B".equals(lastSlider)){
+////            slider2A.setValue(Math.ceil(remain/2));
+//            slider3C.setValue(Integer.parseInt(noOfQuestionA.getText())-Integer.parseInt(sliderValueB1.getText())-Integer.parseInt(sliderValueA1.getText()));
+//            
+//            }
+//            else if("C".equals(lastSlider)){
+//            slider3B.setValue(Integer.parseInt(noOfQuestionA.getText())-Integer.parseInt(sliderValueC1.getText())-Integer.parseInt(sliderValueA1.getText()));
+//            
+//            }
+//            lastSlider="A";
+            
         });
+        
+        
         slider2A.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
             sliderValueA2.setText(df.format(newValue.doubleValue()));
+            
+//            int remain=Integer.parseInt(noOfQuestionA.getText())/observable.getValue().intValue();
+//            slider1A.setValue(remain/2);
+//            slider3A.setValue(remain/2);
+            
+//                 int remain=Integer.parseInt(noOfQuestionA.getText())/newValue.intValue();
+                 
+//            if(lastSlider == null || "B".equals(lastSlider)){
+//            
+//            slider1A.setValue(Math.ceil(remain/2));
+//            slider3A.setValue(Math.floor(remain/2));
+//            }
+//            else if("A".equals(lastSlider)){
+////            slider2A.setValue(Math.ceil(remain/2));
+//            slider3C.setValue( Integer.parseInt(noOfQuestionA.getText())-Integer.parseInt(sliderValueB1.getText())-Integer.parseInt(sliderValueA1.getText()));
+//            
+//            }
+//            else if("C".equals(lastSlider)){
+//            slider3B.setValue(Integer.parseInt(noOfQuestionA.getText())-Integer.parseInt(sliderValueC1.getText())-Integer.parseInt(sliderValueA1.getText()));
+//            
+//            }
+//            lastSlider="B";
+//            slider2A.setValue(Math.ceil(remain/2));
+//            slider3A.setValue(Math.floor(remain/2));
+            
         });
         slider3A.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
             sliderValueA3.setText(df.format(newValue.doubleValue()));
+//              int remain=Integer.parseInt(noOfQuestionA.getText())/observable.getValue().intValue();
+//            slider1A.setValue(remain/2);
+//            slider2A.setValue(remain/2);
+            
+            
         });
 
         slider1B.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
@@ -166,6 +230,72 @@ public class NewAdvanceController implements Initializable {
             sliderValueC3.setText(df.format(newValue.doubleValue()));
         });
 
+//        JTextPane textPane;
+        
+        
+//        https://www.javaworld.com/article/2991463/javafx-improvements-in-java-se-8u40.html?page=4 (Perfect)
+//        https://www.programcreek.com/java-api-examples/?api=javafx.scene.control.TextFormatter (Maybe  Helpful)
+      UnaryOperator<TextFormatter.Change> filter;
+      filter = (TextFormatter.Change change) -> {
+//          System.out.println(change);
+          String text = change.getText();
+          for (int i = 0; i < text.length(); i++)
+              if (!Character.isDigit(text.charAt(i)))
+                  return null;
+          
+          
+          
+          return change;
+        };
+        
+        noOfQuestionA.setTextFormatter(new TextFormatter(filter));
+//        noOfQuestionA.addEventHandler(EventType.ROOT, eventHandler);
+        
+        noOfQuestionB.setTextFormatter(new TextFormatter(filter));
+        noOfQuestionC.setTextFormatter(new TextFormatter(filter));
+        
+//        noOfQuestionA.addEventHandler(, eventHandler);
+//        
+         noOfQuestionA.addEventHandler(KeyEvent.KEY_RELEASED, event -> {
+         
+         if(!"".equals(noOfQuestionA.getText()) && noOfQuestionA.getText() != null){
+             
+             slider1A.setMax(Double.parseDouble(noOfQuestionA.getText()));
+             slider2A.setMax(Double.parseDouble(noOfQuestionA.getText()));
+             slider3A.setMax(Double.parseDouble(noOfQuestionA.getText()));
+             
+                slider1A.setDisable(false);
+                slider2A.setDisable(false);
+                slider3A.setDisable(false);
+                buttonOk.setDisable(false);
+         }else{
+         
+                slider1A.setDisable(true);
+                slider2A.setDisable(true);
+                slider3A.setDisable(true);
+                buttonOk.setDisable(true);
+         
+         }
+//             System.out.println(noOfQuestionA.getText());
+         
+         
+         
+         
+         });
+//             
+////             event. 
+//       KeyCode keyCode = event.getCode();
+//           if (!keyCode.isDigitKey()){
+////           event.consume();
+////event
+//noOfQuestionA.deletePreviousChar();
+//            //   noOfQuestionA.setText("");
+//           }
+//
+////         System.out.println("key pressed event fired");
+//    
+//    });
+        
     }
 
     @FXML
@@ -179,11 +309,16 @@ public class NewAdvanceController implements Initializable {
 //                slider2A.setDisable(false);
 //                slider3A.setDisable(false);
 //                buttonOk.setDisable(false);
+                noOfQuestionA.requestFocus();
+//                        .requestFocusInWindow();
             } else {
                 noOfQuestionA.setDisable(true);
+                noOfQuestionA.setText("");
+                
                 slider1A.setDisable(true);
                 slider2A.setDisable(true);
                 slider3A.setDisable(true);
+                
 
                 if (checkBoxB.isSelected() == false && checkBoxC.isSelected() == false) {
                     buttonOk.setDisable(true);
@@ -200,9 +335,11 @@ public class NewAdvanceController implements Initializable {
                 slider2B.setDisable(false);
                 slider3B.setDisable(false);
                 buttonOk.setDisable(false);
+                noOfQuestionB.requestFocus();
 
             } else {
                 noOfQuestionB.setDisable(true);
+                noOfQuestionB.setText("");
                 slider1B.setDisable(true);
                 slider2B.setDisable(true);
                 slider3B.setDisable(true);
@@ -218,10 +355,12 @@ public class NewAdvanceController implements Initializable {
 
             if (checkBoxC.isSelected()) {
                 noOfQuestionC.setDisable(false);
+                noOfQuestionC.setText("");  
                 slider1C.setDisable(false);
                 slider2C.setDisable(false);
                 slider3C.setDisable(false);
                 buttonOk.setDisable(false);
+                noOfQuestionC.requestFocus();
             } else {
                 noOfQuestionC.setDisable(true);
                 slider1C.setDisable(true);
@@ -295,5 +434,43 @@ public class NewAdvanceController implements Initializable {
             }
 
         }
+    
+   
+   
+    
+    
+    
+//     @FXML
+//    void keyPressed(ActionEvent event) {
+//// displayInfo(event, "KEY PRESSED: ");
+//
+////        KeyCode keyCode = event.getCode();
+////           if (!keyCode.isDigitKey()){
+////           event.consume();
+////               System.out.println(event.getCharacter());
+////           }
+//
+//         System.out.println("key pressed event fired");
+//    }
 
+//    @FXML
+//    void keyReleased(ActionEvent event) {
+////displayInfo(event, "KEY RELEASED: ");
+//    }
+//
+//    @FXML
+//    void keyTyped(ActionEvent event) {
+////displayInfo(event, "KEY TYPED: ");
+//    }
+
+//    @FXML
+//    void onTextAction(ActionEvent event) {
+//System.out.println("prseed");
+//
+//    }
+
+//    @FXML
+//    void textChanged(KeyEvent event) {
+//        System.out.println("prseed");
+//    }
     }
